@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.2)
+project(product-sales-data-tracker)
+set(CMAKE_CXX_STANDARD,17)
+set(CMAKE_CXX_STANDARD_REQUIRED, True)
+set (SOURCES src/main.cpp)
+add_executable(product-sales-data-tracker ${SOURCES})

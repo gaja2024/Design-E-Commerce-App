@@ -1,0 +1,94 @@
+**********************************************************************************************
+
+Problem Statement : 
+Develop an e-commerce application that tracks the sales data for various products. Each product has the following attributes:
+
+Price: The initial price of the product.
+Discount: The percentage discount applied to the product.
+Quantity Sold: The number of units sold of the product.
+You want to:
+
+Calculate the total revenue generated for each product after applying the discount.
+Calculate the total revenue for the entire store.
+
+Total Revenue per Product = (Price - (Price * Discount)) * Quantity Sold
+
+
+example code  :  
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric> // For std::accumulate
+
+// Struct to represent a product
+struct Product {
+    double price;
+    double discount;   // Discount as a percentage (e.g., 0.2 for 20%)
+    int quantitySold;
+};
+
+int main() {
+    // Vector of products sold
+    std::vector<Product> products = {
+        {100.0, 0.10, 50},  // Product 1: Price = 100, 10% discount, 50 units sold
+        {200.0, 0.15, 30},  // Product 2: Price = 200, 15% discount, 30 units sold
+        {300.0, 0.20, 20},  // Product 3: Price = 300, 20% discount, 20 units sold
+        {150.0, 0.05, 40}   // Product 4: Price = 150, 5% discount, 40 units sold
+    };
+
+    // Vector to store the revenue for each product
+    std::vector<double> revenues(products.size());
+
+After you are done with the above question(which is a simple one ) , try this -> Use stl containers and algorithms  : 
+
+************************************************************************************************************************************************************************************************************************************************************************************Problem Statement:  Customer Order Processing System for an E-Commerce Platform
+
+Design a system to process customer orders on an e-commerce platform. Each order consists of the following details:
+
+Customer ID (unique integer).
+Order ID (unique integer).
+Order Amount (double representing the total cost).
+Product IDs (a list of integers representing the products in the order).
+You are provided with:
+
+A list of orders placed by customers.
+A mapping of Product ID to Product Price.
+Your goals:
+
+Calculate the total amount spent by each customer.
+Identify VIP customers (those who have spent more than a specified amount).
+Identify the most frequently purchased product across all customers.
+Sort customers by their total spending in descending order.
+Remove duplicate orders by the same customer (if any exist).
+Input:
+A list of orders, where each order is represented as (Customer ID, Order ID, List of Product IDs).
+A map (or dictionary) of Product ID to Product Price.
+Output:
+A list of customers, along with their total spending, sorted in descending order.
+The ID of the most frequently purchased product.
+A list of VIP customers.
+
+example code :
+
+struct Order {
+    int customerId;
+    int orderId;
+    std::vector<int> productIds;
+};
+
+int main() {
+    // Example product price mapping (Product ID -> Price)
+    std::unordered_map<int, double> productPriceMap = {
+        {1, 100.0}, {2, 50.0}, {3, 75.0}, {4, 200.0}, {5, 150.0}
+    };
+
+    // Orders: (Customer ID, Order ID, List of Product IDs)
+    std::vector<Order> orders = {
+        {1, 1001, {1, 2, 3}},    // Customer 1 bought products 1, 2, 3
+        {2, 1002, {2, 4}},       // Customer 2 bought products 2, 4
+        {1, 1003, {1, 3, 5}},    // Customer 1 placed another order with products 1, 3, 5
+        {3, 1004, {3}},          // Customer 3 bought product 3
+        {2, 1005, {4}},          // Customer 2 placed another order with product 4
+        {1, 1001, {1, 2, 3}}     // Duplicate order by customer 1 (should be removed)
+    };
